@@ -64,7 +64,7 @@
     border-style: solid;
     border-color: #e5e5e5;
     border-width: 0 1px 1px 1px;
-
+    background: #ffffff;
     display: none;
 }
 
@@ -127,6 +127,104 @@
     top: -10px;
     left: 85px;
 }
+#hot-search {
+    height: 135;
+}
+#cat-search .wrapper{
+    height: 135px;
+}
 
 
 /* header 结束 */
+/*cat-serch开始*/
+#innor{
+    height: 130px;
+}
+#cat img{
+    width: 240px;
+    height: 130px;
+}
+#cat, #search{
+    float: left;
+}
+#search-box
+{
+    border: 2px solid #FF0036;
+    width: 625px;
+    height: 36px;
+}
+#search .left
+{
+    width: 483px;
+    height: 32px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    text-indent: 10px;
+}
+#search .right{
+    width: 132px;
+    height: 36px;
+    float:right;
+    background:#FF0036;
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+
+}
+#hot-search .hott
+{
+    float: left;
+
+}
+#hot-search .highlight
+{
+    color: #999;
+}
+#hot-search .a
+{
+    color: #FF0036;
+}
+#hot-search a{
+    padding: 0px 15px 0px 10px;
+    font-size: 12px;
+    border-right: 1px solid #ccc
+}
+#search
+{
+    margin: 45px 0px 0px 45px;
+}
+#last a
+{
+    border-right: none;
+}
+#innor .city{
+    width: 100px;
+    height: 30px;
+
+}
+#innor .international{
+    width: 100px;
+    height: 30px;
+
+}
+
+#content .innor2{
+    height: 36px;
+    line-height: 36px;
+}
+.innor2 a{
+    font-size: 16px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    background: #cccccc;
+}
+
+.innor2 a img{
+    vertical-align: top;
+}
