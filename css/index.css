@@ -112,6 +112,7 @@
     left: -50px;
     display: none;
     box-shadow: 0 0 5px #aaa;
+    z-index: 1;
 }
 #phone:hover .cr-code{
     display: block;
@@ -296,3 +297,103 @@
 
 
 /*brand结束*/
+/*side-sav开始*/
+#side-bar{
+    width: 35px;
+    background: #ccc;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right:0;
+}
+#side-bar .side-bar-tab{
+    margin-top: 100px;
+    display: block;
+    position: relative;
+}
+
+#side-bar .vip{
+    width: 90px;
+    height: 35px;
+    background:#494949;
+    font-size: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    left: -200px;
+    top: -7px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+#side-bar .vip::after{
+    content: '';
+    border-style: solid;
+    border-width: 4px;
+    border-color: transparent transparent transparent #494949;
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: -8px;
+    top: 14px;
+    opacity: 0;
+}
+
+
+#side-bar .side-bar-tab:hover .vip{
+    opacity: 1;
+    left: -90px;}
+/*side-sav结束*/
+/*brand-group 开. */
+#brand-list .brand{
+    width: 122px;
+    height: 110px;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    position: relative;
+}
+#brand-list .brand img{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+#brand-list .brand-mask{
+    background: #494949;
+    width: 122px;
+    height: 110px;
+
+}
+
+
+#brand-list .coupon{
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+}
+#brand-list .enter{
+    width: 63px;
+    height: 18px;
+    background-color: #FF0036;
+    color: #fff;
+
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    font-size: 12px;
+    text-align: center;
+    margin: 10px auto;
+}
+#div1{
+    height: 300px;
+    width: 300px;
+    background: #FF0036;
+}
+/*brand-group 结束*/

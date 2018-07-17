@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#parent{
+    display: flex;
+    height: 300px;
+}
+.bottle{
+    flex-grow: 1;
+
+}
+.div1{
+    background: #a71d5d;
+}
+.div2{
+    background: #494949;
+}
+.div3{
+    background: yellow;
+}
