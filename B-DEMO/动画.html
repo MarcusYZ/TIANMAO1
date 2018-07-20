@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+
+            height: 300px;
+            width: 300px;
+            background-color: #FF0036;
+            transform:scale(2);
+            margin: 200px;
+            animation: move 5s linear forwards infinite;
+            -webkit-perspective: 100px;
+        }
+        @keyframes move {
+            20%{transform:translateX(100px);
+                background-color: #ffff00;
+                transition-delay: 1s
+                }
+            30%{transform:translateY(100px);
+                background-color: #a71d5d;}
+            40%{transform:translateX(200px);
+                background: #ffecec;}
+            50%{transform:translateY(200px);
+                background: #f2f2f2;}
+
+
+        }
+    </style>
+</head>
+<body>
+        <div class="div1"></div>
+</body>
+</html>

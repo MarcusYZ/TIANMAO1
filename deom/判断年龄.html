@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var msg = window.prompt("", "请输入你要判断的年龄");
+    if (msg < 14) {
+        document.write('儿童')
+    }
+    else if (msg > 14 && msg < 24) {
+        document.write('青少年')
+    }
+    else if (msg > 24 && msg < 40) {
+        document.write('青年')
+    }
+    else if (msg > 40 && msg < 60) {
+        document.write('中年')
+    }
+    else document.write('老年');
+
+</script>
+</body>
+</html>
