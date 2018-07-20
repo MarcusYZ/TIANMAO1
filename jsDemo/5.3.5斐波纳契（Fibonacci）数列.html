@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--斐波纳契（Fibonacci）数列的第一项是1，第二项是1，以后各项都是前两项的和。
+试用递归函数和非递归函数各编写一个程序，求斐波纳契数列第N项的值。-->
+1 1 2 3 5 8 13 21
+<!--2. function fool2(n){-->
+<!--if(n==1){-->
+
+<!--return n*fool2(n-1);-->
+<!--}  递归-->
+<!--argument.callee 和上面的调用自己是一个意思。-->
+<!--编写程序，计算 1!+2!+3!+…..＋10！的结果。-->
+<script>
+    function fool(i){
+       fool(1)=1
+        fool(2)=1
+        return sum=fool(i-2)+fool(i-1)
+
+
+    }
+</script>
+
+</body>
+</html>
