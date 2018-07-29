@@ -1,0 +1,131 @@
+<!DOCTYPE html> <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /*习惯*/
+    li {
+        list-style: none;
+    }
+    /*通用-给li去掉基础的样式*/
+
+    #container {
+        position: relative;
+    }
+    /*/通用-不脱离文档流，会基于它本来的位置移动*/
+    /*文档定义relative给其他元素作为参照物*/
+    #imgs {
+        position: relative;
+        height: 500px;
+    }
+
+    #imgs div {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+    #imgs .actived{
+        opacity: 1;
+        z-index: 1;
+    }
+    /*核心-作为被选中元素的标志*/
+    /*通用-z-index 控制元素层级*/
+    #imgs .banner1 {
+        background-color: #e8e8e8;
+    }
+    /*核心-注意下文的js清空时要给元素加上banner*/
+    #imgs .banner2 {
+        background-color: #1d3cbc;
+    }
+
+    #imgs .banner3 {
+        background-color: #dc2d32;
+    }
+
+    #nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 30px;
+        z-index: 999;
+    }
+    /*通用-transform：translateX（）位移元素并不会脱离文档流*/
+    #nav li {
+        width: 25px;
+        height: 5px;
+        background-color: #000;
+        opacity: .3;
+        filter: alpha(opacity=30);
+        float: left;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+    /*通用-宽高背景颜色，透明度，浮动，鼠标变样式，元素之间的间隔*/
+    /*透明度opacity 还要加上alpha（opacity=30）*/
+
+    #nav .selected {
+        background-color: #fff;
+        opacity: .6;
+    }
+    /*核心-选中的效果*/
+</style>
+</head>
+<body>
+<div id="container">
+    <div id="imgs">
+        <div class="banner1 actived">
+            <img src="img/1.jpg" alt="">
+        </div>
+        <div class="banner2">
+            <img src="img/2.jpg"
+                 alt="">
+        </div>
+        <div class="banner3">
+            <img src="img/3.jpg" alt="">
+        </div>
+    </div>
+    <ul id="nav">
+        <li class="selected"></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</div>
+
+
+
+<script>
+    var oNav = document.getElementById('nav');
+    var aLi = oNav.getElementsByTagName('li');
+    var oImgs = document.getElementById('imgs');
+    var aDiv = oImgs.getElementsByTagName('div');
+    //定义全局变量 ，当需要调用哪个元素的时候就要给它定义
+    for(var i=0; i<aLi.length; i++){
+        // 循环数组给所有的元素
+        aLi[i].index = i;
+        // 给素组中的第i个元素设置一个index属性用来设置i（路标）
+        aLi[i].onmouseover = function(){
+            // 给数组中第i个坐标绑定一个触发事件，触发器是onmouseover鼠标放在上面时
+            for(var j=0; j<aLi.length; j++){
+                // 事件是再次循环遍历数组
+                aLi[j].className = '';
+                // 给所有的li元素的class名都清空
+                aDiv[j].className = 'banner' + (j + 1);
+                // div的类名加上banner+（j+1）
+            }
+            this.className = 'selected';
+            // 把当前的class名改成选中状态
+            aDiv[this.index].className += ' actived ';
+            // 相应的把this赋值给index再给确定的div加上表示激活的类名
+
+        };
+    }
+
+</script>
+</body>
+</html>

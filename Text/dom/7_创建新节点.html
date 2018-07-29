@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="div1">
+    <p id="p1">This is a paragraph.</p>
+    <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+    var para=document.createElement('p');
+    // 创建元素节点
+    var node=document.createTextNode('你好');
+    // 创建文本节点
+    var element=document.getElementById('div1');
+    para.appendChild(node);
+
+    element.appendChild(para)
+</script>
+
+</body></body>
+</html>

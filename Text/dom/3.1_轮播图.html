@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #select li{
+            list-style: none;
+
+        }
+        #container{
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+        #imgs img{
+            display: none;
+            }
+        #imgs .selected{
+            display: block;
+        }
+
+
+
+        #tolefttoright{
+            position: absolute;
+            bottom: 20px;
+            left: 20px  ;
+        }
+
+        #select{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #select li, #tolefttoright span{
+            color: #ffffff;
+            float: left;
+            background: #000000;
+            margin-left: 5px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #select .nav-selected{
+            color: #FF0036;
+
+        }
+
+    </style>
+</head>
+<body>
+        <div id="container">
+            <div id="imgs">
+                <img class="selected" src="img/1.jpg" alt="">
+                <img src="img/2.jpg" alt="">
+                <img src="img/3.jpg" alt="">
+            </div>
+            <div id="tolefttoright">
+                <span id="prev"> <</span>
+                <span id="next"> > </span>
+            </div>
+            <ul id="select">
+                <li class="nav-selected">1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+
+        </div>
+        <script>
+            var oSelect=document.getElementById('select');
+            var aLi=oSelect.getElementsByTagName('li');
+            var oImgs=document.getElementById('imgs');
+            var aImg=oImgs.getElementsByTagName('img');
+            var oPrev=document.getElementById('prev');
+            var oNext=document.getElementById('next');
+            var oContainer=document.getElementById('container');
+            var iNowIndex=0;
+            var timer;
+            for (var i=0;i<aLi.length;i++){
+                aLi[i].index=i;
+                aLi[i].onmouseover=function () {
+                    iNowIndex=this.index;
+                    changeImg()
+
+                }
+            }
+            function changeImg() {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aImg[i].className = '';
+                }
+                aLi[iNowIndex].className='nav-selected';
+                aImg[iNowIndex].className='selected';
+            }
+            oPrev.onclick=oNext.onclick=function () {
+                if (this===oPrev){
+                    iNowIndex--;
+                    if (iNowIndex===-1){
+                        iNowIndex=aLi.length-1;
+                    }
+                }
+                else{
+                    iNowIndex++;
+                    if (iNowIndex===aLi.length){
+                        iNowIndex=0
+                    }
+
+                }changeImg()
+
+            };
+         oPrev.onselectstart=oNext.onselectstart=function () {
+             return false;
+         };
+         oContainer.onmouseover=function () {
+             clearInterval(timer);
+         };
+         oContainer.onmouseout=function () {
+             play();
+         };
+         function play() {
+             timer=setInterval(function () {
+                 oNext.onclick()
+             },1000)
+
+             }
+
+
+        </script>
+</body>
+</html>

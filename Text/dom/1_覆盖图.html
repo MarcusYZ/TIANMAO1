@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width: 300px;
+            height: 300px;
+            border: solid #FF0036 20px;
+            position: relative;
+            /*核心-定位-作为相对位置*/
+            cursor: pointer;
+        }
+        .div2 img{
+            height: 150px;
+            width: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -75px;
+            margin-left: -75px;
+        }
+        .div3{
+            position: absolute;
+            /*核心-定位-把覆盖物以父元素为参照物定位到00位置*/
+            height: 100%    ;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,0.8);
+            opacity: 0;
+            /*核心-元素样式-由虚转实的虚*/
+            -webkit-transition: opacity 0.3s ease;
+            -moz-transition: opacity 0.3s ease;
+            -ms-transition: opacity 0.3s ease;
+            -o-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+            核心-产生一个
+        }
+      .div1:hover .div3{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2"><img src="img/logo.png" alt=""></div>
+        <div class="div3"></div>
+    </div>
+</body>
+</html>

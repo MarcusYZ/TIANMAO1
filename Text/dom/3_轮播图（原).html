@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+/*通用去掉外边距和内边距*/
+        li {
+            list-style: none;
+        }
+        /*常用样式去掉list的样式*/
+
+        #container {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+    /*position定位是为了给子元素作为参照物width，height，margin是常规css标签 */
+        #imgs img {
+            display: none;
+        }
+        /*核心-display 让图片消失不占原来的物理位置*/
+        #imgs .selected {
+            display: block;
+        }
+    /*核心-dispaly：block让 通过js的控制把它赋给选中的元素*/
+        #nav {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        /*常规-定义导航的位置*/
+        #nav li, #arrows span {
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            color: #fff;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        /*常规-wieth ，height，background ，color，float，margin-right，text-align，line-height，cursor*/
+        #nav .nav-selected {
+            background-color: orange;
+        }
+    /*核心-给js的控制*/
+        #arrows {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        /*常规-position 定位*/
+    </style>
+</head>
+<body>
+<div id="container">
+    <!--容器-->
+    <div id="imgs">
+        <img src="img/1.jpg" alt="" class="selected">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <!--四张图片放在一个块里-->
+    <ul id="nav">
+        <li class="nav-selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <!--四个按键放在一个ul中-->
+    <div id="arrows">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+    <!--两控制左右的按键放在一个块里-->
+</div>
+
+<script>
+    var oImgs = document.getElementById('imgs');
+    var aImg = oImgs.getElementsByTagName('img');
+    var oNav = document.getElementById('nav');
+    var aLi = oNav.getElementsByTagName('li');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var oContainer = document.getElementById('container');
+    var iNowIndex = 0; //  全局变量，保存的是当前显示图片的索引
+    var timer;
+// 定义全局变量要放在最上面，先用document.getElementById 选中 大的id标签缩小范围，再用标签选择器选中小容器里的水，
+//    还要有一个全局变量保存显示图片的索引，还有一个全局变量存放定时器，有了这个全局变量就不会在下面产生多个时间标准导致的问题
+    for (var i = 0; i < aLi.length; i++) {//触发器
+        aLi[i].index = i; //桥
+        aLi[i].onmouseover = function () {
+            iNowIndex = this.index;
+            changeImg();//事件
+        };
+    }
+// 首先这个循环的目的是完成1.赋函数给每一个元素，因为一个一个给元素很麻烦。
+    // 2.li经过循环存储到了一个数组里，onmouseover把鼠标放到一个元素上面。
+    // 3.定义的全局变量是为了在这里存放触发的元素是哪个。并且把它赋值到iNowIndex中
+    //4.触发changeimg换行函数。这个函数由于被多次使用被封装。
+
+    oPrev.onclick = oNext.onclick = function () {
+        if (this === oPrev) {
+            iNowIndex--;
+            if (iNowIndex == -1) {
+                iNowIndex = aLi.length - 1;
+            }
+        } else {
+            iNowIndex++;
+            if (iNowIndex == aLi.length) {
+                iNowIndex = 0;
+            }
+        }
+        changeImg();
+    };
+    // 这块是用来造成下一个的按键的函数
+    //1.给两个元素一个触发事件
+    //2.由于这两个元素的触发事件大体类似可以用if来优化
+    //3.如果 this监听到的数据是前一个元素的名字，那么让轮播图往前退一格。
+    //4.如果this监听到的数据是后一个元素的名字，那么就让轮播图往前加一格。
+    //5.考虑到轮播图的循环效果，所以要给它两个判断
+    //6.因为数组最小就是0，当标志为-1超过数组的范围的时候就要给让标志重新计算，变成数组的长度
+    //7.同理，当标志为4，大于数组的长度范围
+    oPrev.onselectstart = oNext.onselectstart = function(){
+        return false;
+    };
+    //由于不用给多个按键赋值自然不用判断也不用循环
+    //给前面的元素的触发事件和后面的触发事件相同，都是当文档开始的就开始进行。
+    //并且取消了连按三下就会选中的浏览器自带事件
+
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    };
+    //给大容器一个事件，当鼠标放在上面的时候停止播放
+    oContainer.onmouseout = function(){
+        play();
+    };
+    //给大容器一个事件，当鼠标移开的时候开始播放
+    play();
+
+    // 切换
+    function changeImg() {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+            aImg[i].className = '';
+        }
+        aLi[iNowIndex].className = 'nav-selected';
+        aImg[iNowIndex].className = 'selected';
+    }
+    //  我们思考得出结论很多的按键按到之后都会要求切换页面，所以我们来封装一个有这个功能的函数。
+    // 1.清除你按的那个健元素原来给出的特殊样式和哪里产生改变的那个地方的特殊样式，如果不清除，后面触发之后所有的元素都有那种样式。
+    // 2.按触发健，和发生改变的地方赋予应有的样式。
+    // 3.具体触发什么样式由于要呼应当初怎么触发的情况，所以应该给触发健部分一个标志，可以映射到这个切换函数中。
+
+
+    // 播放
+    function play(){
+        timer = setInterval(function(){
+            oNext.onclick();
+        }, 1000);
+    }
+
+//封装一个播放事件
+// 1.这个叫play的事件中
+
+</script>
+</body>
+</html>

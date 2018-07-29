@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #menu{
+            border-bottom: 1px solid;
+        }
+        
+        #menu .item{
+            width: 120px;
+            height: 30px;
+            background-color: #ccc;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #container{
+            width: 400px;
+            height: 300px;
+            border: 1px solid;
+            margin: 100px auto;
+        }
+
+        #menu .menu-selected{
+            background-color: #000;
+            color: #fff;
+        }
+
+        #content div{
+            display: none;
+        }
+
+        #content .content-selected{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container" class="clearfix">
+    <ul id="menu" >
+        <li class="item menu-selected">html</li>
+        <li class="item">css</li>
+        <li class="item">javascript</li>
+    </ul>
+    <div id="content">
+        <div class="content-selected">001</div>
+        <div>002</div>
+        <div>003</div>
+    </div>
+</div>
+
+<script>
+    var oMenu = document.getElementById('menu');
+    // 获取id menu的元素 并且给它命名 var oMnu
+    var aLi = oMenu.getElementsByTagName('li');
+    // 用oMenu来获取它下面的所有li
+    var oContent = document.getElementById('content');
+    // 获取id content的元素，并且给它命名 var oContent
+    var aDiv = oContent.getElementsByTagName('div');
+    // 再给用aDiv获取它下面的div命名aDiv
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        // 给每一个li对象自定义属性index，保存住循环的时候i的值
+        aLi[i].onclick = function(){
+            for(var j=0; j<aLi.length; j++){
+                aLi[j].className = 'item';
+                aDiv[j].className = '';
+            }
+            this.className += ' menu-selected';
+
+            aDiv[this.index].className = 'content-selected';
+            // 把获取的i的值来标记div让它得到class属性
+        };
+
+    }
+
+</script>
+</body>
+</html>
