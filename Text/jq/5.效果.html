@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            position: relative;
+        }
+        .div1{
+            background:#98bf21;height:500px;width:400px;position:absolute;
+
+        }
+        .hide{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>    <button class="show">show</button>
+            <button class="toggle">按我切换</button>
+            <button class="out">按我淡出</button>
+            <button class="in">按我淡入</button>
+<button class="fadetoggle">按我切换淡入淡出</button>
+
+<button class="fadeto">按我变淡</button>
+<br>
+<button class="up">上滑</button>
+<button class="down">下滑</button>
+<button class="slidetoggle">滑动切换</button>
+<button class="animate">我是动画！！！</button>
+<button class="stop">停止</button>
+
+<button class="lian">把上面的多个效果放在一起呀</button>
+
+<h3> 谷歌</h3>
+        <div class="div1">
+            <button class="hide">按我隐藏</button>
+
+            <p>站点名：谷歌</p>
+
+
+        </div>
+
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+            $(function () {
+                $('.hide').on('click',function () {
+                    $(this).parents('.div1').hide(5000);
+
+                })
+                $('.show').on('click',function () {
+                   $('.div1').show('fast');
+
+                })
+                $('.toggle').on('click',function () {
+                    $('.div1').toggle('fast');
+
+                })
+                $('.out').on('click',function () {
+                    $('.div1').fadeOut()
+
+                })
+                $('.in').on('click',function () {
+                    $('.div1').fadeIn()
+
+                })
+                $('.fadetoggle').on('click',function () {
+                    $('.div1').fadeToggle(3000)
+
+                })
+                $('.fadeto').on('dblclick',function () {
+                    $('.div1').fadeTo('slow',0.3)
+
+                })
+                $('.up').on('click',function () {
+                    $('.div1').slideUp('slow')
+
+                })
+                $('.down').on('click',function () {
+                    $('.div1').slideDown('slow')
+
+                })
+                $('.slidetoggle').on('click',function () {
+                    
+                    $('.div1').slideToggle('slide')
+
+                })
+                $('.animate').on('click',function () {
+                    $('.div1').animate({left:'+=250px',top:'+=110px',opacity:'0.3'},'fast',function () {
+
+                        $('.div1').animate({left:0,top:'100px',opacity:'1'})
+                    })
+
+                })
+                $('.stop').on('click',function () {
+                    $('.div1').stop()
+
+                })
+                $('.animate1').on('click',function () {
+                    var div=$('.div1');
+                    div.animate({height:'100px'});
+                    div.animate({width:'200px'});
+                    div.animate({left:'500px'});
+                    div.animate({height:'500px'});
+                    div.animate({width:'400'});
+                    div.animate({left:0})
+
+                })
+                $('.lian').on('click',function () {
+                    $('.div1').css('background','red').slideUp('slow').slideDown('slow').fadeOut('slow').fadeIn('slow').hide().show().animate({height:'600px',width:'600px'},'first',function () {
+                       $('.div1').animate({height:'500px',width:'400px'}).css('background','green')
+                    })
+
+                })
+            })
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .zheng{
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+<p class="shi">施<b>粗体</b><br><input id="cainiao" type="text" value="菜鸟教程"></p>
+    <p class="zheng" id="nihao">正</p>
+    <p class="yang">眻</p>
+    <p class="yao">要</p>
+    <p class="que"><input type="text" class="ppp" value="怎么样">去</p>
+    <p class="pin">拼</p>
+    <p class="duo">多</p>
+    <p class="duo">多</p>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('.shi').on('click',function () {
+                alert('Text:'+$('.shi').text())
+            });
+
+
+            $('.shi').on('click',function () {
+                alert('HTML:'+$('.shi').html())
+            });
+
+
+            $('.shi').on('click',function () {
+                alert('Val:'+$('#cainiao').val())
+            })
+            $('.zheng').on('click',function () {
+                    alert($(".zheng").attr('id'));
+
+            })
+
+            $('.yang').on('click',function () {
+                $('.yang').text('你最帅！');
+
+            })
+            $('.yao').on('click',function () {
+                $('.yao').html('那还用说么')
+
+            });
+            $('.que').on('click',function () {
+                $('.ppp').val('施正阳超级自律!');
+
+            })
+            $('.pin').on('click',function () {
+                $('.pin').attr('xx','yyy')
+
+            })
+            $('.duo').on('click',function () {
+              $('.duo').prop('xx','yy');
+
+                alert($(".pin").attr('xx'));
+            })
+
+        });
+
+    </script>
+</body>
+</html>

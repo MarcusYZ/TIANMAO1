@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="delate">删除ul</button>
+<button class="delateEmpty">删除子元素</button>
+<button class="remove">过滤元素</button>
+<ul class="nav">
+    <li class="li1">你好</li>
+    <li class="li2"></li>
+    <li class="li3"></li>
+    <li class="li4"></li>
+    <li class="li5"></li>
+    <li class="li6"></li>
+    <img src="img/1.jpg" alt="">
+</ul>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('.li1').append('hhhhh');
+        var txt2=$('<p>').text('段落');
+        var txt1='<p>文本。</p>';
+        var txt3=document.createElement('p');
+        txt3.innerHTML='文本';
+        $('body').append(txt1,txt2,txt3);
+        $('.nav').on('click',function () {
+            // 这是里委托
+
+            $('img').before('你好');
+            $('img').after('<i>快乐</i>');
+        })
+        $('.delate').on('click',function () {
+            $('.nav').remove()
+
+        })
+        $('.delateEmpty').on('click',function () {
+            $('.nav').empty()
+
+        })
+        $('.remove').on('click',function () {
+            $('li').remove('.li1')
+
+        })
+    })
+</script>
+</body>
+</html>
