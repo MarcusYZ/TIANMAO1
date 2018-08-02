@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .selected{
+            color: #ffff00;
+        }
+        p{
+            background: #000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+        <p>我最帅</p>
+        <button class="div">按我给p增加类名o</button>
+        <button class="div1">按我给p移除类名o</button>
+        <button class="div2">按我切换p的类名</button>
+        <button class="div3">按我改变p的css的多条属性</button>
+        <button class="div4">按我改变p的css的一条属性</button>
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+            $(function () {
+                $('.div').on('click',function () {
+                    $('p').addClass('selected')
+
+                })
+                $('.div1').on('click',function () {
+                    $('p').removeClass('selected')
+
+                })
+                $('.div2').on('click',function () {
+                    $('p').toggleClass('selected')
+
+                })
+                $('.div3').on('click',function () {
+                    $('p').css({
+                        'background':'red',
+                        'color':'white'
+                    });
+                    $('.div4').on('click',function () {
+                        $("p").css("background","yellow");
+
+                    })
+
+                })
+            })
+
+        </script>
+</body>
+</html>

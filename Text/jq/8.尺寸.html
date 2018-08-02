@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 300px;
+            width: 300px;
+            border: 50px solid #FF0036;
+            margin: 50px;
+            padding: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<button class="getSize">点我获取宽高</button>
+
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('.getSize').on('click',function () {
+            var txt = ''
+            txt += 'div的内容宽度是：' + $('.div1').width() + '<br>'
+            txt += 'div的内容高度是：' + $('.div1').height() + '<br>'
+            txt += 'div的内容和内边距宽度是：' + $('.div1').innerWidth() + '<br>'
+            txt += 'div的内容和内边距的高度是：' + $('.div1').innerHeight() + '<br>'
+            txt += 'div的内容和内边距和边框距宽度是：' + $('.div1').outerWidth() + '<br>'
+            txt += 'div的内容和内边距和边框距高度是：' + $('.div1').outerHeight() + '<br>'
+            txt += 'div的内容和内边距和边框距宽度和margin是：' + $('.div1').outerWidth(true) + '<br>'
+            txt += 'div的内容和内边距和外边距高度和margin是：' + $('.div1').outerHeight(true) + '<br>'
+
+            $('.div1').html(txt);
+
+        })
+
+
+        })
+
+
+
+
+</script>
+</body>
+</html>
